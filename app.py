@@ -8,7 +8,7 @@ import os
 from LLMapp import generate_recommendations, detect_anomalies, call_llm_for_viz
 
 
-API_KEY = "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"
+API_KEY = "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"
 
 if not API_KEY:
     raise ValueError("Clé API manquante. Veuillez la définir dans le fichier .env")
