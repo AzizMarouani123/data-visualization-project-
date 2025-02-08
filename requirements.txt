@@ -4,7 +4,6 @@ matplotlib
 seaborn
 anthropic
 numpy
-os
 logging
 base64
 io
