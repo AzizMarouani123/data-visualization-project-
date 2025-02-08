@@ -5,5 +5,4 @@ seaborn
 anthropic
 numpy
 logging
-base64
 io
