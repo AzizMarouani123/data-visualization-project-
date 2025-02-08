@@ -3,6 +3,7 @@ import pandas as pd
 import re
 import logging
 import matplotlib.pyplot as plt
+import os
 
 from LLMapp import generate_recommendations, detect_anomalies, call_llm_for_viz
 
@@ -24,11 +25,13 @@ def main():
         st.markdown("""
         ### Naviguez entre les sections :
         - **Accueil** : Introduction et aperçu de l'application.
+        - **Tests de Qualité des Données** : Analyse approfondie des données.
         - **Analyses IA Avancées** : Analyse des données et visualisations personnalisées.
         """, unsafe_allow_html=True)
 
     pages = {
         "🏠 Accueil": "home",
+        "🧪 Tests de Qualité des Données": "data_quality_tests",
         "🤖 Analyses IA Avancées": "ai_analytics"
     }
 
@@ -64,6 +67,13 @@ def main():
             <img src="https://img.freepik.com/vecteurs-libre/gros-employe-isole-travaillant-dans-illustration-plate-bureau-lieu-travail_1150-41780.jpg" alt="Illustration des capacités de l'application" style="border-radius: 15px;">
         </div>
         """, unsafe_allow_html=True)
+    
+    elif selected_page == "🧪 Tests de Qualité des Données":
+        st.markdown("<h1 style='text-align: center; color: #2C3E50;'>Tests de Qualité des Données</h1>", unsafe_allow_html=True)
+        st.info("Vous allez être redirigé vers l'interface des tests de qualité des données.")
+        if st.button("🚀 Ouvrir les Tests de Qualité des Données"):
+            with st.spinner("Chargement de l'interface des tests..."):
+                os.system("streamlit run tests.py")  # Commande pour lancer tests.py
 
     elif selected_page == "🤖 Analyses IA Avancées":
         st.markdown("<h1 style='text-align: center; color: #2C3E50;'>Analyse et Visualisation Avancées</h1>", unsafe_allow_html=True)
@@ -89,6 +99,8 @@ def main():
 
             st.markdown("<h3 style='color: #8E44AD;'>📊 Visualisations Personnalisées avec IA</h3>", unsafe_allow_html=True)
             user_prompt = st.text_area("📝 Décrivez votre visualisation :", placeholder="Exemple : Afficher un graphique à barres des ventes trimestrielles")
+
+            
 
             if st.button("🎨 Générer la Visualisation"):
                 if user_prompt.strip():
